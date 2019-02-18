@@ -8,4 +8,4 @@ set(CMAKE_CXX_STANDARD 11)
 add_executable(test
         kdtree.c
         kdtree.h
-        main.cpp kd_index.h kd_index.cpp)
+        index_test.cpp value_index.h value_index.cpp)

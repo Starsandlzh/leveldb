@@ -4,7 +4,7 @@
 
 #include <cstdlib>
 #include <iostream>
-#include "kd_index.h"
+#include "value_index.h"
 
 ValueIndex::ValueIndex() {
     tree_ = kd_create(2);

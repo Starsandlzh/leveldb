@@ -2,8 +2,8 @@
 // Created by stars on 2018/12/29.
 //
 
-#ifndef KD-INDEX_KD_INDEX_H
-#define KD-INDEX_KD_INDEX_H
+#ifndef VALUE-INDEX_KD_INDEX_H
+#define VALUE-INDEX_KD_INDEX_H
 #include "kdtree.h"
 #include <vector>
 #include <string>
@@ -28,4 +28,4 @@ private:
 };
 
 
-#endif //KD-INDEX_KD_INDEX_H
+#endif //VALUE-INDEX_KD_INDEX_H

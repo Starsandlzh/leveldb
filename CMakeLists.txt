@@ -153,10 +153,10 @@ target_sources(leveldb
     "${PROJECT_SOURCE_DIR}/util/options.cc"
     "${PROJECT_SOURCE_DIR}/util/random.h"
     "${PROJECT_SOURCE_DIR}/util/status.cc"
-    "${PROJECT_SOURCE_DIR}/kd-index/kdtree.c"
-    "${PROJECT_SOURCE_DIR}/kd-index/kdtree.h"
-    "${PROJECT_SOURCE_DIR}/kd-index/kd_index.cpp"
-    "${PROJECT_SOURCE_DIR}/kd-index/kd_index.h"
+    "${PROJECT_SOURCE_DIR}/value_index/kdtree.c"
+    "${PROJECT_SOURCE_DIR}/value_index/kdtree.h"
+    "${PROJECT_SOURCE_DIR}/value_index/value_index.cpp"
+    "${PROJECT_SOURCE_DIR}/value_index/value_index.h"
 
   # Only CMake 3.3+ supports PUBLIC sources in targets exported by "install".
   $<$<VERSION_GREATER:CMAKE_VERSION,3.2>:PUBLIC>
@@ -247,3 +247,8 @@ add_executable(db_test
   "${PROJECT_SOURCE_DIR}/test/db_test.cc"
         )
 target_link_libraries(db_test leveldb)
+
+add_executable(index_test
+  "${PROJECT_SOURCE_DIR}/value_index/index_test.cpp"
+        )
+target_link_libraries(index_test leveldb)

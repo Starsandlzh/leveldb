@@ -10,7 +10,7 @@
 #include "db/dbformat.h"
 #include "db/skiplist.h"
 #include "util/arena.h"
-#include "kd-index/kd_index.h"
+#include "value_index/value_index.h"
 
 namespace leveldb {
 
