@@ -15,6 +15,12 @@ int main() {
     string s;
     db->Get(ReadOptions(), "hello", &s);
     cout<<s<<endl;
+
+    db->Put(WriteOptions(), "hello", "not world");
+    string s1;
+    db->Get(ReadOptions(), "hello", &s1);
+    cout<<s1<<endl;
+
     delete db;
     return 0;
 }
