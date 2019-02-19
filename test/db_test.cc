@@ -21,6 +21,8 @@ int main() {
     db->Get(ReadOptions(), "hello", &s1);
     cout<<s1<<endl;
 
+    cout << "helloWorld" << endl;
+
     delete db;
     return 0;
 }
