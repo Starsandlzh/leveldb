@@ -1,6 +1,6 @@
 #include <iostream>
-#include "kdtree.h"
-#include "kd_index.h"
+#include "value_index.h"
+#include "leveldb/db.h"
 
 using namespace std;
 
@@ -13,9 +13,7 @@ int main() {
     double p5[] = {8, 2};
     string s1 = "v1", s2 = "v2", s3 = "v3", s4 = "v4", s5 = "v5";
 
-//    kdtree* tree = kd_create(2);
-//    kd_data_destructor(tree, free);
-    auto *index = new KdIndex;
+    auto index = new leveldb::ValueIndex;
 
     index->Insert(p1, &s1);
     index->Insert(p2, &s2);
@@ -29,7 +27,5 @@ int main() {
         cout << *value << endl;
     }
 
-    delete &values;
-    delete index;
     return 0;
 }

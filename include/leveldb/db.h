@@ -7,6 +7,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include <vector>
 #include "leveldb/export.h"
 #include "leveldb/iterator.h"
 #include "leveldb/options.h"
@@ -148,7 +149,7 @@ class LEVELDB_EXPORT DB {
   virtual void CompactRange(const Slice* begin, const Slice* end) = 0;
 
   // Find key by value use secondary index.
-  virtual void RangeQuery(const Slice& value, std::string* data) = 0;
+  virtual std::vector<std::string*> RangeQuery(const Slice& value, double range, int num) = 0;
 
 };
 

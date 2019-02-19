@@ -10,7 +10,7 @@
 #include "db/dbformat.h"
 #include "db/skiplist.h"
 #include "util/arena.h"
-#include "kd-index/kd_index.h"
+#include "value_index/value_index.h"
 
 namespace leveldb {
 
@@ -63,7 +63,7 @@ class MemTable {
   // Insert value into secondary index
   void ValueIndexPut(const Slice& value, const Slice& key);
   // Get key from seconday index by value
-  void ValueIndexGet(const Slice& value, std::string* data);
+  std::vector<std::string*> ValueIndexGet(const Slice& value, double range, int num);
 
  private:
   ~MemTable();  // Private since only Unref() should be used to delete it
