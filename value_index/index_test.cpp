@@ -13,7 +13,7 @@ int main() {
     double p5[] = {8, 2};
     string s1 = "v1", s2 = "v2", s3 = "v3", s4 = "v4", s5 = "v5";
 
-    auto index = new ValueIndex;
+    auto index = new leveldb::ValueIndex;
 
     index->Insert(p1, &s1);
     index->Insert(p2, &s2);

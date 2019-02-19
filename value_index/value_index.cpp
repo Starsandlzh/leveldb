@@ -6,6 +6,8 @@
 #include <iostream>
 #include "value_index.h"
 
+namespace leveldb {
+
 ValueIndex::ValueIndex() {
     tree_ = kd_create(2);
     kd_data_destructor(tree_, free);
@@ -22,10 +24,10 @@ void ValueIndex::Insert(double *coord, void *data) {
     kd_insert(tree_, coord, data);
 }
 
-void ValueIndex::Insert(const std::string &value, void *data) {
+void ValueIndex::Insert(const Slice& value, void *data) {
     try {
         double coord[2];
-        extractKey(value, coord);
+        ExtractKey(value, coord);
         Insert(coord, data);
     } catch (...) {
 
@@ -45,10 +47,10 @@ std::vector<std::string *> ValueIndex::Range(double *target_coord, double range,
     return values;
 }
 
-std::vector<std::string *> ValueIndex::Range(const std::string &value, double range, int num) {
+std::vector<std::string *> ValueIndex::Range(const Slice& value, double range, int num) {
     try {
         double coord[2];
-        extractKey(value, coord);
+        ExtractKey(value, coord);
         return Range(coord, range, num);
     } catch (...) {
         return std::vector<std::string *>();
@@ -58,11 +60,13 @@ std::vector<std::string *> ValueIndex::Range(const std::string &value, double ra
 /**
  * convert string value to coordinate.
  */
-void ValueIndex::extractKey(const std::string &data, double *coord) {
+void ValueIndex::ExtractKey(const Slice& value, double *coord) {
     std::string::size_type start, mid;
+    std::string data = value.data();
     start = 0;
     mid = data.find(',');
     coord[0] = strtod(data.substr(start, mid - start).c_str(), nullptr);
     coord[1] = strtod(data.substr(mid + 1, data.length()).c_str(), nullptr);
 }
 
+}
