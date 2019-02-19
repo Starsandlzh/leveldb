@@ -26,6 +26,7 @@ public:
     // extract coordinate key from input value
     void ExtractKey(const Slice& data, double* coord);
 
+
 private:
     // a kd-tree structure for storing index
     kdtree* tree_;
